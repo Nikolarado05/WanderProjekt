@@ -58,6 +58,10 @@ const Login = ({ navigation }) => {
         setLoading(false);
 
         try {
+          AsyncStorage.setItem(
+            "user",
+            JSON.stringify({ ...inputs, loggedIn: false })
+          );
           navigation.navigate("Registration");
         } catch (error) {
           Alert.alert("Fehler", "Etwas ist schiefgelaufen shiit");
