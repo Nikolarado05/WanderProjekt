@@ -34,12 +34,12 @@ const HomeScreen = () => {
 
       {/* Second Section */}
       <View className="px-6 mt-8 space-y-3">
-        <Text className="text-[#3C6072] text-[42px]">Enjoy the trip with</Text>
-        <Text className="text-[#00BCC9] text-[38px] font-bold">Good Kar</Text>
+        <Text className="text-[#3C6072] text-[42px]">Geniesse die Reise </Text>
+        <Text className="text-[#00BCC9] text-[38px] font-bold">Zlatan</Text>
 
         <Text className="text-[#3C6072] text-base">
-          Geniessen Sie eine Reise mit dem Riesigen Monster Kari von Benedict
-          Schwule
+          Geniessen Sie eine Reise mit dem Riesigen Monster Zlatan von Ibra
+          Schule
         </Text>
       </View>
 

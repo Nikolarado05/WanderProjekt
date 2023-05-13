@@ -10,26 +10,16 @@ import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native-animatable";
 import { FontAwesome, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 
-const ItemScreen = ({ route }) => {
+const ItemScreen = (props, { route }) => {
   const navigation = useNavigation();
 
   const data = route?.params?.param;
-  useLayoutEffect;
-  {
-    () => {
-      navigation.setOptions({
-        headerShown: false,
-      });
-    },
-      [];
-    const navigation = useNavigation();
 
-    useLayoutEffect(() => {
-      navigation.setOptions({
-        headerShown: false,
-      });
-    }, []);
-  }
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -39,7 +29,7 @@ const ItemScreen = ({ route }) => {
             source={{
               uri: data?.photo?.images?.large?.url
                 ? data?.photo?.images?.large?.url
-                : "https://www.br.de/radio/bayern2/sendungen/radiowissen/geschichte/adolf-hitler-106~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=a0ea4",
+                : "https://img.welt.de/img/gesundheit/psychologie/mobile141230891/6272507287-ci102l-w1024/sortiertes-essen-2.jpg",
             }}
             className="w-full h-72 object-cover rounded-2xl"
           />
@@ -143,30 +133,30 @@ const ItemScreen = ({ route }) => {
         )}
 
         <View className="space-y-2 mt-4 bg-gray-100 rounded-2xl px-4 py-2">
-            {data?.phone && (
-                <View className="items-center flex-row space-x-6 ">
-                    <FontAwesome name="phone" size={24} color="#428288 "/>
-                    <Text className="text-lg">{data?.phone}</Text>
-                </View>
-            )}
-             {data?.email && (
-                <View className="items-center flex-row space-x-6 ">
-                    <FontAwesome name="envelope" size={24} color="#428288 "/>
-                    <Text className="text-lg">{data?.email}</Text>
-                </View>
-             )}
-             {data?.address && (
-                <View className="items-center flex-row space-x-6 ">
-                    <FontAwesome name="map-pin" size={24} color="#428288 "/>
-                    <Text className="text-lg">{data?.address}</Text>
-                </View>
-             )}
+          {data?.phone && (
+            <View className="items-center flex-row space-x-6 ">
+              <FontAwesome name="phone" size={24} color="#428288 " />
+              <Text className="text-lg">{data?.phone}</Text>
+            </View>
+          )}
+          {data?.email && (
+            <View className="items-center flex-row space-x-6 ">
+              <FontAwesome name="envelope" size={24} color="#428288 " />
+              <Text className="text-lg">{data?.email}</Text>
+            </View>
+          )}
+          {data?.address && (
+            <View className="items-center flex-row space-x-6 ">
+              <FontAwesome name="map-pin" size={24} color="#428288 " />
+              <Text className="text-lg">{data?.address}</Text>
+            </View>
+          )}
 
-             <View className="mt-4 px-4 py-4 rounded-lg bg-[#06B2BE] items-center justify-center mb-12">
-                <Text className="text-3xl font-semibold uppercase tracking-wider text-gray-100">
-                    Book Now
-                </Text>
-             </View>
+          <View className="mt-4 px-4 py-4 rounded-lg bg-[#06B2BE] items-center justify-center mb-12">
+            <Text className="text-3xl font-semibold uppercase tracking-wider text-gray-100">
+              Book Now
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

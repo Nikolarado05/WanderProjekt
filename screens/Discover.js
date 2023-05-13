@@ -25,7 +25,7 @@ import { ActivityIndicator } from "react-native";
 import { getPlacesData } from "../api";
 import axios from "axios";
 
-const Discover = () => {
+const Discover = (props) => {
   const navigation = useNavigation();
 
   const [type, setType] = useState("restaurants");
@@ -35,6 +35,8 @@ const Discover = () => {
   const [bl_lng, setbl_lng] = useState(null);
   const [tr_lat, setTr_lat] = useState(null);
   const [tr_lng, setTr_lng] = useState(null);
+
+  const { fields } = props;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -48,7 +50,7 @@ const Discover = () => {
       setMainData(data);
       setInterval(() => {
         setisLoading(false);
-      }, 2000);
+      }, 1000);
     });
   }, [bl_lat, bl_lng, tr_lat, tr_lng, type]);
 
@@ -57,15 +59,19 @@ const Discover = () => {
       <View className="flex-row items-center justify-between px-8">
         <View>
           <Text className="text-[40px] text-[#0B646B] font-bold">Discover</Text>
+          
           <Text className="text-[#527283] text-[36px]">the beauty today</Text>
         </View>
 
-        <View className="w-12 h-12 bg-gray-400 rounded-md items-center justify-center shadow-lg">
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Login")}
+          className="w-12 h-12 bg-gray-400 rounded-md items-center justify-center shadow-lg"
+        >
           <Image
             source={Avatar}
             className="w-full h-full rounded-md object-cover"
           />
-        </View>
+        </TouchableOpacity>
       </View>
       <View className="flex-row items-center bg-white mx-6 rounded-xl py-1 px-6 shadow-lg mt-6">
         <GooglePlacesAutocomplete
@@ -146,7 +152,7 @@ const Discover = () => {
                       imageSrc={
                         data?.photo?.images?.medium?.url
                           ? data?.photo?.images?.medium?.url
-                          : "https://www.br.de/radio/bayern2/sendungen/radiowissen/geschichte/adolf-hitler-106~_v-img__16__9__xl_-d31c35f8186ebeb80b0cd843a7c267a0e0c81647.jpg?version=a0ea4"
+                          : "https://icdn.sempremilan.com/wp-content/uploads/2020/02/Zlatan-Ibrahimovic-Toro.jpeg"
                       }
                       title={data.name}
                       location={data?.location_string}

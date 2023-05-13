@@ -6,8 +6,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import Discover from "./screens/Discover";
 import ItemScreen from "./screens/ItemScreen";
+import Login from "./screens/Login";
+import {AsyncStorage} from 'react-native';
+import RegistrationScreen from "./screens/RegistrationScreen"
+import ScreenH from "./screens/ScreenH"
+
+
 
 const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   return (
@@ -17,6 +24,10 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Discover" component={Discover} />
           <Stack.Screen name="ItemScreen" component={ItemScreen} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Registration" component={RegistrationScreen} />
+          <Stack.Screen name="ScreenH" component={ScreenH} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </TailwindProvider>
