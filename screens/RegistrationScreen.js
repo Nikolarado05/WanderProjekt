@@ -53,7 +53,7 @@ const Login = ({ navigation }) => {
             "user",
             JSON.stringify({ ...userData, loggedIn: true })
           );
-          navigation.navigate("HomeScreen");
+          navigation.navigate("Logout");
         } else {
           Alert.alert("Error", "Daten nicht korrekt.");
         }
