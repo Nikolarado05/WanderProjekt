@@ -24,6 +24,7 @@ import ItemCarDontainer from "../components/ItemCarDontainer";
 import { ActivityIndicator } from "react-native";
 import { getPlacesData } from "../api";
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Discover = (props) => {
   const navigation = useNavigation();
@@ -45,6 +46,16 @@ const Discover = (props) => {
   }, []);
 
   useEffect(() => {
+    (async () => {
+      const userData = await AsyncStorage.getItem("user");
+      if (userData) {
+        setUserDetails(JSON.parse(userData));
+      }
+    })();
+  }, []);
+  const [userDetails, setUserDetails] = useState();
+
+  useEffect(() => {
     setisLoading(true);
     getPlacesData(bl_lat, bl_lng, tr_lat, tr_lng, type).then((data) => {
       setMainData(data);
@@ -59,12 +70,18 @@ const Discover = (props) => {
       <View className="flex-row items-center justify-between px-8">
         <View>
           <Text className="text-[40px] text-[#0B646B] font-bold">Discover</Text>
-          
+
           <Text className="text-[#527283] text-[36px]">the beauty today</Text>
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("Login")}
+          onPress={() =>
+            !userDetails
+              ? navigation.navigate("Login")
+              : userDetails.loggedIn
+              ? navigation.navigate("Logout")
+              : navigation.navigate("Registration")
+          }
           className="w-12 h-12 bg-gray-400 rounded-md items-center justify-center shadow-lg"
         >
           <Image

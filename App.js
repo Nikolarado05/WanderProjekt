@@ -17,27 +17,7 @@ import Loader from "./components/Loader";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [initialRouteName, setInitialRouteName] = React.useState("");
-  React.useEffect(() => {
-    setTimeout(authUser, 2000)
-  }, []);
-  const authUser = async () => {
-    try {
-      let userData = await AsyncStorage.getItem("user");
-      if (userData) {
-        userData = JSON.parse(userData);
-        if (userData?.loggedIn) {
-          setInitialRouteName('Discover')
-        }else{
-          setInitialRouteName('Registration')
-        }
-      } else {[]
-        setInitialRouteName("Login");
-      }
-    } catch (error) {
-      setInitialRouteName("Login");
-    }
-  };
+
   return (
 
     <TailwindProvider>

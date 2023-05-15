@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Logout = ({ navigation }) => {
   const [userDetails, setUserDetails] = React.useState();
   React.useEffect(() => {
-    getUserDetails;
+    getUserDetails();
   }, []);
   const getUserDetails = async () => {
     const userData = await AsyncStorage.getItem("user");
@@ -23,15 +23,14 @@ const Logout = ({ navigation }) => {
   const outlog = () => {
     AsyncStorage.setItem(
       "user",
-      JSON.stringify({ ...userDetails, loggedIn: false }),
+      JSON.stringify({ ...userDetails, loggedIn: false })
     );
     navigation.navigate("Registration");
-
   };
 
   const backscreen = () => {
     navigation.navigate("Discover");
-    };
+  };
 
   return (
     <View
@@ -43,12 +42,11 @@ const Logout = ({ navigation }) => {
       }}
     >
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        Hallo{userDetails?.fullname}
+        Hallo {userDetails?.fullname}
       </Text>
       <Button title="Logout" onPress={outlog}></Button>
 
       <Button title="Discover Screen" onPress={backscreen}></Button>
-
     </View>
   );
 };
