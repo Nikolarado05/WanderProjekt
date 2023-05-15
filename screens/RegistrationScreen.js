@@ -7,7 +7,7 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import { Keyboard } from "react-native";
 import Loader from "../components/Loader";
-import { AsyncStorage } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login = ({ navigation }) => {
   const [inputs, setInputs] = React.useState({
