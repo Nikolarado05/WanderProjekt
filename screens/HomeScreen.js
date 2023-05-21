@@ -35,11 +35,11 @@ const HomeScreen = () => {
       {/* Second Section */}
       <View className="px-6 mt-8 space-y-3">
         <Text className="text-[#3C6072] text-[42px]">Geniesse die Reise </Text>
-        <Text className="text-[#00BCC9] text-[38px] font-bold">Zlatan</Text>
+        <Text className="text-[#00BCC9] text-[38px] font-bold">Explore</Text>
 
         <Text className="text-[#3C6072] text-base">
-          Geniessen Sie eine Reise mit dem Riesigen Monster Zlatan von Ibra
-          Schule
+          Geniessen Sie eine Reise mit der Explorer App 
+          von Nikola Maschinovic
         </Text>
       </View>
 
