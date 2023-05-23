@@ -13,6 +13,7 @@ import ScreenH from "./screens/ScreenH";
 import Logout from "./screens/Logout";
 import React from "react";
 import Loader from "./components/Loader";
+import Location from "./screens/Location"
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,8 @@ export default function App() {
           <Stack.Screen name="Registration" component={RegistrationScreen} />
           <Stack.Screen name="ScreenH" component={ScreenH} />
           <Stack.Screen name="Logout" component={Logout} />
+          <Stack.Screen name="Location" component={Location} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </TailwindProvider>

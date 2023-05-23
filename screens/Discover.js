@@ -25,6 +25,7 @@ import { ActivityIndicator } from "react-native";
 import { getPlacesData } from "../api";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Gyroscope } from "expo-sensors";
 
 const Discover = (props) => {
   const navigation = useNavigation();
@@ -39,10 +40,24 @@ const Discover = (props) => {
 
   const { fields } = props;
 
+  const handleDeviceShake = ({ x, y, z }) => {
+    const acceleration = Math.sqrt(x ** 2 + y ** 2 + z ** 2);
+    if (acceleration > 20) {
+      navigation.navigate("Registration");
+    }
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
+  }, []);
+
+  useEffect(() => {
+    const subscription = Gyroscope.addListener(handleDeviceShake);
+    return () => {
+      subscription.remove();
+    };
   }, []);
 
   useEffect(() => {
@@ -69,7 +84,14 @@ const Discover = (props) => {
     <SafeAreaView className="flex-1 bg-white relative">
       <View className="flex-row items-center justify-between px-8">
         <View>
-          <Text className="text-[40px] text-[#0B646B] font-bold">Discover</Text>
+          <TouchableOpacity>
+            <Text
+              className="text-[40px] text-[#0B646B] font-bold"
+              onPress={() => navigation.navigate("Location")}
+            >
+              Discover
+            </Text>
+          </TouchableOpacity>
 
           <Text className="text-[#527283] text-[36px]">the beauty today</Text>
         </View>
